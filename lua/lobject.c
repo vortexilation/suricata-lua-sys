@@ -93,6 +93,7 @@ int luaO_rawarith (lua_State *L, int op, const TValue *p1, const TValue *p2,
     case LUA_OPSHL: case LUA_OPSHR:
     case LUA_OPBNOT: {  /* operate only on integers */
       lua_Integer i1; lua_Integer i2;
+      /* coverity[check_return] */
       if (tointegerns(p1, &i1) && tointegerns(p2, &i2)) {
         setivalue(res, intarith(L, op, i1, i2));
         return 1;
